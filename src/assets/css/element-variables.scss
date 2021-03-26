@@ -1,0 +1,52 @@
+@import "@/assets/css/theme.scss";
+/* 改变主题色变量 */
+$--color-primary: $color;
+$--color-success: $success;
+$--color-warning: $warning;
+$--color-danger: $danger;
+$--color-text-primary: $prTextColor;
+$--color-text-regular: $regTextColor;
+$--color-info: $infoColor;
+$--color-text-secondary: #999999;
+$--border-color-base: #EAEAEA;
+$--background-color-base: #F7F8FF;
+$--font-size-extra-large: 20px;
+$--font-size-large: 18px;
+$--font-size-small: 13px;
+$--border-radius-base: 3px;
+
+// local
+$--alert-title-font-size: 14px;
+$--button-disabled-background-color: #E1E1E1;
+$--button-padding-horizontal: 16px;
+$--button-medium-padding-horizontal: 16px;
+$--button-small-padding-horizontal: 16px;
+$--button-mini-padding-horizontal: 12px;
+$--button-small-padding-vertical: 8px;
+$--button-mini-padding-vertical: 6px;
+$--avatar-icon-font-size: 16px;
+$--backtop-hover-background-color: #6785FF;
+$--badge-background-color: $--color-danger;
+$--cascader-menu-selected-font-color: $--color-primary;
+$--checkbox-disabled-border-color: $--border-color-base;
+$--checkbox-bordered-mini-padding: 3px 15px 3px 10px;
+$--dialog-padding-primary: 24px;
+$--input-small-font-size: 14px;
+$--loading-spinner-size: 40px;
+$--pagination-font-size: 14px;
+$--pagination-button-width: 30px;
+$--pagination-button-height: 30px;
+$--popover-padding: 10px;
+$--rate-icon-size: 16px;
+$--switch-on-color: $--color-success;
+$--table-border-color: $--border-color-base;
+$--table-font-color: $--color-text-primary;
+$--table-header-font-color: $--color-text-regular;
+$--table-header-background-color: #EFF2FF;
+$--table-row-hover-background-color: #F7F8FF;
+$--input-border-radius: $--border-radius-base;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: 'element-plus/lib/theme-chalk/fonts';
+
+@import "element-plus/packages/theme-chalk/src/index";
