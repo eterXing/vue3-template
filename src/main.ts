@@ -1,6 +1,6 @@
 /*
  * @Date: 2021-03-19 17:32:47
- * @LastEditTime: 2021-03-24 15:45:05
+ * @LastEditTime: 2021-04-02 15:12:14
  * @Description: 入口
  */
 import { createApp } from 'vue'
@@ -22,6 +22,7 @@ app.use(store)
 
 // 样式重置
 import '@/assets/css/reset.scss'
+import '@/assets/css/common.scss'
 
 import http from '@/request/http'
 app.use(http)

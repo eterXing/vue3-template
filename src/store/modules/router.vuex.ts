@@ -1,6 +1,6 @@
 /*
  * @Date: 2021-03-25 10:48:43
- * @LastEditTime: 2021-03-25 18:25:22
+ * @LastEditTime: 2021-03-29 11:44:34
  * @Description: 动态路由
  */
 import { copy } from '@/utils/index'
@@ -56,6 +56,8 @@ const router = {
                     resourceList = openRouters(context.state.resourceList) // 资源展开
 
                 accessedRouters = filterResourceList(routerList, resourceList)
+
+                console.log(77, accessedRouters)
                 context.commit('SET_ROUTER_List', accessedRouters)
                 context.commit('SET_USER_ROUTES', accessedRouters)
                 context.commit('SET_COMPARE', true)

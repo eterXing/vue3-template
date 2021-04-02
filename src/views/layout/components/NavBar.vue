@@ -1,6 +1,6 @@
 <!--
  * @Date: 2021-03-25 17:07:47
- * @LastEditTime: 2021-03-26 17:51:11
+ * @LastEditTime: 2021-03-29 11:02:32
  * @Description: 顶部
 -->
 <template>
@@ -41,20 +41,29 @@
 </template>
 
 <script lang='ts'>
-import { ref, reactive, defineComponent, watch } from 'vue'
+import { ref, defineComponent, watch, inject } from 'vue'
 import { useStore } from 'vuex'
-import { useRouter, useRoute, onBeforeRouteUpdate } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 export default defineComponent({
     props: { isCollapse: Boolean },
     emits: ['update:isCollapse'],
     setup: () => {
         const $store = useStore(),
-            $router = useRouter()
+            $router = useRouter(),
+            $confirm: any = inject('$confirm')
 
         const logout = () => {
-                $store.dispatch('user/delUserInfo')
-                $store.dispatch('router/delRouterInfo')
-                $router.push('/login')
+                $confirm('确认要退出登录吗?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning',
+                })
+                    .then(() => {
+                        $store.dispatch('user/delUserInfo')
+                        $store.dispatch('router/delRouterInfo')
+                        $router.push('/login')
+                    })
+                    .catch(() => {})
             },
             userName = $store.getters.userName
 
@@ -65,13 +74,12 @@ export default defineComponent({
 // 面包屑路由相关
 function breadController() {
     const $route: any = useRoute()
-    let breadList: any[] = reactive([])
+    let breadList: any = ref([]) // 方便重新赋值
 
     watch(
         () => $route,
         (val) => {
-            breadList.length = 0
-            breadList.push(...val.matched.filter((item: { name: string; path: string }) => item.name && item.name !== 'layout'))
+            breadList.value = [...val.matched.filter((item: { name: string; path: string }) => item.name && item.name !== 'layout')]
         },
         { deep: true, immediate: true }
     )
@@ -107,9 +115,26 @@ function breadController() {
                 font-size: 16px;
                 color: rgba(255, 255, 255, 0.6) !important;
             }
-            .el-breadcrumb__item:last-child .el-breadcrumb__inner,
-            .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+            .el-breadcrumb__item:last-child .el-breadcrumb__inner {
                 color: #fff !important;
+            }
+            .breadcrumb-enter-active,
+            .breadcrumb-leave-active {
+                transition: all 0.5s;
+            }
+
+            .breadcrumb-enter,
+            .breadcrumb-leave-active {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            .breadcrumb-move {
+                transition: all 0.5s;
+            }
+
+            .breadcrumb-leave-active {
+                position: absolute;
             }
         }
     }

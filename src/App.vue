@@ -1,6 +1,6 @@
 <!--
  * @Date: 2021-03-19 17:32:47
- * @LastEditTime: 2021-03-26 17:34:52
+ * @LastEditTime: 2021-03-29 10:50:49
  * @Description: file content
 -->
 <template>
@@ -16,12 +16,15 @@ export default defineComponent({
     name: 'App',
     setup() {
         let internalInstance: any = getCurrentInstance(),
-            $http = internalInstance.appContext.config.globalProperties.$http
+            $http = internalInstance.appContext.config.globalProperties.$http,
+            $confirm = internalInstance.appContext.config.globalProperties.$confirm
 
         // http请求
         provide('$http', $http)
+        // element提示弹框
+        provide('$confirm', $confirm)
 
-        // 区分操作系统
+        // 区分操作系统设置默认字体
         function datectOS() {
             let isWin = navigator.platform === 'Win32' || navigator.platform === 'Windows',
                 isMac = navigator.platform === 'Mac68K' || navigator.platform === 'MacPPC' || navigator.platform === 'Macintosh' || navigator.platform === 'MacIntel'

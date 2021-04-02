@@ -1,6 +1,6 @@
 <!--
  * @Date: 2021-03-23 15:46:14
- * @LastEditTime: 2021-03-26 10:30:59
+ * @LastEditTime: 2021-03-29 11:31:47
  * @Description: 登录页
 -->
 <template>
@@ -69,11 +69,18 @@ export default defineComponent({
                             },
                             {
                                 icon: 'el-icon-menu',
-                                resourceName: '表格',
+                                resourceName: '一级菜单',
                                 route: '/index',
                                 type: 0,
                                 sortNo: 1,
-                                children: [],
+                                children: [
+                                    {
+                                        resourceName: '二级菜单',
+                                        route: '/index/child',
+                                        type: 0,
+                                        sortNo: 1,
+                                    },
+                                ],
                             },
                         ])
                         $router.push('/')

@@ -1,10 +1,10 @@
 <!--
  * @Date: 2021-03-23 10:42:14
- * @LastEditTime: 2021-03-26 18:26:07
+ * @LastEditTime: 2021-04-02 15:11:37
  * @Description: index页面
 -->
 <template>
-  <div>
+  <div class="dp_index">
     <div @click="toHome">{{title}}</div>
     <div>{{name}}</div>
     <div>{{age}}</div>

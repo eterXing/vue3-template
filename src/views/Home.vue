@@ -1,10 +1,10 @@
 <!--
  * @Date: 2021-03-23 10:42:07
- * @LastEditTime: 2021-03-23 15:41:08
+ * @LastEditTime: 2021-04-02 15:11:24
  * @Description: file content
 -->
 <template>
-  <div>
+  <div class="dp_index">
     {{ title }}
   </div>
 </template>

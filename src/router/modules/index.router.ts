@@ -1,15 +1,16 @@
 /*
  * @Date: 2021-03-25 09:21:31
- * @LastEditTime: 2021-03-26 17:52:51
+ * @LastEditTime: 2021-03-29 11:45:18
  * @Description: 权限路由
  */
+import StaticHome from '@/views/StaticHome.vue'
 interface RouterRow {
     path: string
     name: string
     isOnce?: Boolean
     hidden?: Boolean
     meta?: any
-    component: () => {}
+    component: any
     children?: any[]
 }
 
@@ -25,12 +26,17 @@ const index: RouterRow[] = [
     },
     {
         path: '/index',
-        name: 'Index',
+        name: '一级菜单',
         meta: {},
         hidden: false,
-        isOnce: true,
-        component: () => import('@/views/Index.vue'),
-        children: []
+        component: StaticHome,
+        children: [{
+            path: 'child',
+            name: '二级菜单',
+            meta: {},
+            hidden: false,
+            component: () => import('@/views/Index.vue'),
+        }]
     }
 ]
 
